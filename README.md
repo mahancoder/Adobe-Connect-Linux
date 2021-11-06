@@ -9,7 +9,7 @@ First clone the repository
 ```
 git clone https://github.com/mahancoder/Adobe-Connect-Linux.git
 ```
-Then run `build.sh` to generate the binaries. Then refer to the [Installation](#installation) section to install it.
+Then run `build.sh` to generate the binaries. Install the app by running the `install.sh` script **as root**.
 ## Usage
 You can use the app to open meeting launched from your browser. Currently, you can't enter the meeting url directly in the app, but rather you should enter it in the browser, and after logging in, click on the `Open in Application` button.
-#### **NOTE:** You NEED to change your User-Agent to be able to open the meeting. For that, you can use the [User-Agent Switcher and Manager](https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg) extension.
+#### **NOTE:** You NEED to change your User-Agent to be able to open the meeting. For that, you can use the [User-Agent Switcher and Manager](https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg) (Firefox)[https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/] extension.
