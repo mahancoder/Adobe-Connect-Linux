@@ -19,7 +19,7 @@
 				"-Wl,-rpath,.",
 				"-g",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"main-new"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
