@@ -8,15 +8,38 @@
 #include <X11/X.h>
 #include <X11/Xutil.h>
 #include <iostream>
+#include <thread>
 using namespace std;
 CefRefPtr<CefBrowser> browser;
-void function(GdkEvent *event, gpointer data) 
+Display *main_display;
+Window window_xid;
+Window child_window;
+volatile bool isOpen = true;
+void event_loop()
 {
-        browser->GetHost()->CloseBrowser(true);
-}
-void destroy(gpointer data)
-{
-    cout << "Hi";
+    Atom wmDeleteMessage = XInternAtom(main_display, "WM_DELETE_WINDOW", False);
+    XSetWMProtocols(main_display, window_xid, &wmDeleteMessage, 1);
+    XEvent event;
+    while (true)
+    {
+        XNextEvent(main_display, &event);
+        if (event.type == ClientMessage)
+        {
+            if (event.xclient.data.l[0] == wmDeleteMessage)
+            {
+                isOpen = false;
+                XCloseDisplay(main_display);
+                break;
+            }
+        }
+        else if (event.type == ConfigureNotify)
+        {
+            auto ce = event.xconfigure;
+            XResizeWindow(main_display, child_window, ce.width, ce.height);
+            browser->GetHost()->WasResized();
+        }
+        
+    }
 }
 int main(int argc, char *argv[])
 {
@@ -34,44 +57,54 @@ int main(int argc, char *argv[])
     string cache_path = "/home/" + string(getlogin()) + "/.config/";
     CefString(&settings.root_cache_path).FromString(cache_path);
     CefString(&settings.cache_path).FromString(cache_path + "adobe_connect/cache");
-    CefString(&settings.user_agent).FromString("Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko");
 
     settings.remote_debugging_port = 9450;
     settings.no_sandbox = 1;
 
     CefInitialize(main_args, settings, cefapp.get(), nullptr);
-    gtk_init(&argc, &argv);
 
     CefRefPtr<CefRequestContext> ctx = CefRequestContext::GetGlobalContext();
-
     CefRefPtr<CefValue> val(CefValue::Create());
     val->SetInt(1);
-
     CefString err = CefString();
-
     ctx->SetPreference("profile.default_content_setting_values.plugins", val, *&err);
     ctx->SetPreference("plugins.run_all_flash_in_allow_mode", val, *&err);
+
+    gtk_init(&argc, &argv);
+
+    main_display = XOpenDisplay(0);
+    Window root_window = XDefaultRootWindow(main_display);
+    window_xid = XCreateWindow(main_display, root_window, 10, 10, 800, 600, 10, CopyFromParent, InputOutput, CopyFromParent, 0, nullptr);
+    XMapWindow(main_display, window_xid);
+    XFlush(main_display);
+    XSelectInput(main_display, window_xid, StructureNotifyMask | PropertyChangeMask | SubstructureNotifyMask);
+    XStoreName(main_display, window_xid, "Adobe Connect");
+    window_info.SetAsChild(window_xid, CefRect(0, 0, 800, 600));
+
+
 
     browser_settings.application_cache = cef_state_t::STATE_ENABLED;
     CefString(&window_info.window_name).FromString("Adobe Connect");
 
     browser = CefBrowserHost::CreateBrowserSync(window_info, cefclient, launch_args.substr(11), browser_settings, nullptr, ctx);
 
-    Window window_xid = browser->GetHost()->GetWindowHandle();
-    auto gdk_display = gdk_display_get_default();
-    auto window = gdk_x11_window_foreign_new_for_display(gdk_display, window_xid);
-    gdk_window_maximize(window);
-    gdk_window_set_icon_name(window, "Adobe Connect");
+    child_window = browser->GetHost()->GetWindowHandle();
+
     XClassHint *hint = XAllocClassHint();
     char *name = new char(strlen("Adobe Connect") + 1);
     strcpy(name, "Adobe Connect");
     hint->res_class = name;
     hint->res_name = name;
-    XSetClassHint(gdk_x11_get_default_xdisplay(), window_xid, hint);
-    gdk_event_handler_set(function, window, destroy);
-    CefRunMessageLoop();
-    browser->GetHost()->CloseBrowser(true);
-    CefQuitMessageLoop();
+    XSetClassHint(main_display, window_xid, hint);
+
+    thread event_loop_thread(event_loop);
+
+    while (isOpen)
+    {
+        CefDoMessageLoopWork();
+        sleep((1000 / 30) / 1000);
+    }
+
     CefShutdown();
 
     return 0;
