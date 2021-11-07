@@ -10,11 +10,14 @@
 #include <iostream>
 #include <thread>
 using namespace std;
+
 CefRefPtr<CefBrowser> browser;
 Display *main_display;
 Window window_xid;
 Window child_window;
+
 volatile bool isOpen = true;
+
 void event_loop()
 {
     Atom wmDeleteMessage = XInternAtom(main_display, "WM_DELETE_WINDOW", False);
