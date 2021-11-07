@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Adobe Connect
+Exec=bash -c "cd INSTALL_PATH && ./connect %u"
+Icon=INSTALL_PATH/connect.png
+StartupNotify=false
+StartupWMClass=Adobe Connect
+MimeType=x-scheme-handler/connectpro;

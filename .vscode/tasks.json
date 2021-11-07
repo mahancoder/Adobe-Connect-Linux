@@ -19,7 +19,7 @@
 				"-Wl,-rpath,.",
 				"-g",
 				"-o",
-				"main"
+				"connect"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
