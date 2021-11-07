@@ -41,8 +41,21 @@ void event_loop()
             XResizeWindow(main_display, child_window, ce.width, ce.height);
             browser->GetHost()->WasResized();
         }
-        
     }
+}
+void maximizeWindow(Window win, Display *display)
+{
+    XEvent ev;
+    ev.xclient.window = win;
+    ev.xclient.type = ClientMessage;
+    ev.xclient.format = 32;
+    ev.xclient.message_type = XInternAtom(display, "_NET_WM_STATE", False);
+    ev.xclient.data.l[0] = 1;
+    ev.xclient.data.l[1] = XInternAtom(display, "_NET_WM_STATE_MAXIMIZED_HORZ", False);
+    ev.xclient.data.l[2] = XInternAtom(display, "_NET_WM_STATE_MAXIMIZED_VERT", False);
+    ev.xclient.data.l[3] = 1;
+
+    XSendEvent(display, DefaultRootWindow(display), False, SubstructureRedirectMask | SubstructureNotifyMask, &ev);
 }
 int main(int argc, char *argv[])
 {
@@ -84,8 +97,6 @@ int main(int argc, char *argv[])
     XStoreName(main_display, window_xid, "Adobe Connect");
     window_info.SetAsChild(window_xid, CefRect(0, 0, 800, 600));
 
-
-
     browser_settings.application_cache = cef_state_t::STATE_ENABLED;
     CefString(&window_info.window_name).FromString("Adobe Connect");
 
@@ -99,6 +110,8 @@ int main(int argc, char *argv[])
     hint->res_class = name;
     hint->res_name = name;
     XSetClassHint(main_display, window_xid, hint);
+
+    maximizeWindow(window_xid, main_display);
 
     thread event_loop_thread(event_loop);
 
