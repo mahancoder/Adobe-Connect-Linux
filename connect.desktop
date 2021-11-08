@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Adobe Connect
-Exec=bash -c "cd INSTALL_PATH && ./connect %u"
+Exec=INSTALL_PATH/open.sh %u
 Icon=INSTALL_PATH/connect.png
 StartupNotify=false
 StartupWMClass=Adobe Connect
