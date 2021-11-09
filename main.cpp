@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
 
     settings.remote_debugging_port = 9450;
     settings.no_sandbox = 1;
+    settings.log_severity = LOGSEVERITY_DEBUG;
 
     CefInitialize(main_args, settings, cefapp.get(), nullptr);
 

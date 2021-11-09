@@ -19,3 +19,4 @@ main-new
 MyClient
 .fuse*
 Release/*
+build_temp/*
