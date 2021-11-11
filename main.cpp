@@ -1,5 +1,5 @@
-#include "include/cef_app.h"
-#include "include/wrapper/cef_helpers.h"
+#include "CEF/include/cef_app.h"
+#include "CEF/include/wrapper/cef_helpers.h"
 #include "MyApp.h"
 #include "MyClient.h"
 #include <unistd.h>
