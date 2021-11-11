@@ -1,5 +1,5 @@
-#include "CEF/include/cef_app.h"
-#include "CEF/include/wrapper/cef_helpers.h"
+#include "include/cef_app.h"
+#include "include/wrapper/cef_helpers.h"
 class MyApp : public CefApp, public CefRenderProcessHandler
 {    
 public:
