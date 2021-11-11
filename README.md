@@ -3,7 +3,7 @@
 Adobe Connect does not have a linux version officially, however, since it's written in flash, it's possible to run it in a browser. This project, uses an underlying chromium browser with flash support to run the flash file behind the meetings. It provides the binding necessary to automatically launch the app just like the Windows version for convenience.
 This project uses [Chromium Embedded Framework](https://github.com/chromiumembedded) to utlize the underlying browser.
 ## Installation
-To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases). Then, exectue `install.sh` **as root** to install the app.
+To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases). Next, you need to put `libpepflashplayer.so` in the clone directory. Due to copyright reasons, I can't provide them here. You can get it from an internet archive of the flash player download website. You also need to unlock it using this tool [darktohka/FlashPatch](https://github.com/darktohka/FlashPatch). Then, exectue `install.sh` **as root** to install the app.
 ### Building from source
 First clone the repository
 ```
