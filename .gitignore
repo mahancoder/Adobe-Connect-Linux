@@ -20,3 +20,4 @@ MyClient
 .fuse*
 Release/*
 build_temp/*
+libpepflashplayer.so
