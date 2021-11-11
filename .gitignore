@@ -21,3 +21,4 @@ MyClient
 Release/*
 build_temp/*
 libpepflashplayer.so
+connect.png

@@ -22,7 +22,7 @@ strip Release/libcef.so
 echo "Compiling the app..."
 g++ main.cpp MyApp.cpp -I. -L. `pkg-config --cflags --libs gtk+-3.0` -lcef -lX11 -lcef_dll_wrapper -Wl,-rpath,. -o connect
 echo "Copying app files..."
-cp -a {install.sh,connect.desktop,open.sh,connect,connect.png,libpepflashplayer.so,LICENSE} Release/
+cp -a {install.sh,connect.desktop,open.sh,connect,LICENSE} Release/
 rm -r build_temp/*
 rmdir build_temp
 echo "Done!"

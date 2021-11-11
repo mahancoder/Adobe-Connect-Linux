@@ -1,5 +1,9 @@
 #!/bin/bash
 shopt -s extglob
+echo "Downloading icon..."
+wget https://upload.wikimedia.org/wikipedia/commons/d/d0/Adobe_Connect_icon_%282020%29.svg -O connect.svg
+convert connect.svg connect.png
+rm connect.svg
 echo "Copying files..." &&
 INSTALL_PATH="${INSTALL_DIRECTORY:-/usr/bin/adobe/connect}" &&
 mkdir -p $INSTALL_PATH &&
