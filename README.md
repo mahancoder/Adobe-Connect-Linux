@@ -4,12 +4,19 @@ Adobe Connect does not have a linux version officially, however, since it's writ
 This project uses [Chromium Embedded Framework](https://github.com/chromiumembedded) to utlize the underlying browser.
 ## Installation
 To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases). 
+
 Next, you need to put `libpepflashplayer.so` in the Release directory. Due to copyright reasons, I can't provide it here. 
+
 You can get it from the [archive.org copy of the official Adobe Pepper Flash Player](https://web.archive.org/web/20210101005931/https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.465/flash_player_ppapi_linux.x86_64.tar.gz). 
-Extract the archive. The file you need is `libpepflashplayer.so`. Y
-ou also need to unlock it using this tool [darktohka/FlashPatch](https://github.com/darktohka/FlashPatch). 
+
+Extract the archive. The file you need is `libpepflashplayer.so`.
+
+You also need to unlock it using this tool [darktohka/FlashPatch](https://github.com/darktohka/FlashPatch). 
+
 You also need to have `ImageMagick` installed. 
+
 Then, exectue `install.sh` **as root** to install the app.
+
 ### Building from source
 First clone the repository
 ```
