@@ -25,7 +25,5 @@ echo "Copying app files..."
 cp -a {install.sh,connect.desktop,open.sh,connect,LICENSE,connect.png} Release/
 rm -r .buildtemp/*
 rmdir .buildtemp
-chmod +x Release/open.sh
-chmod +x Release/install.sh
-chmod +x Release/connect
+chmod +x Release/open.sh Release/connect Release/install.sh
 echo "Done!"
