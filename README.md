@@ -28,3 +28,9 @@ Then run `build.sh` to generate the binaries. Refer to the installation section 
 ## Usage
 You can use the app to open meeting launched from your browser. Currently, you can't enter the meeting url directly in the app, but rather you should enter it in the browser, and after logging in, click on the `Open in Application` button. **As of right now, Screen sharing does NOT work due to how pepper flash works.**
 #### **NOTE:** You NEED to change your User-Agent to be able to open the meeting. For that, you can use the User-Agent Switcher and Manager extension. [Chrome](https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
+## Credits
+The project wouldn't be possible without the [Chromium Embedded Framework](https://github.com/chromiumembedded)
+
+The app's icon is made by [u/arash28134](https://www.reddit.com/user/arash28134)
+
+The orignal Adobe Connect and Adobe Flash Player are made by Adobe Inc.
