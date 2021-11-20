@@ -21,4 +21,9 @@ MyClient
 Release/*
 build_temp/*
 libpepflashplayer.so
-connect.png
+*.tar.gz
+Flatpak
+repo
+.flatpak-builder
+*.yml
+flatpak_connect.desktop

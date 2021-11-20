@@ -5,4 +5,5 @@ Exec=INSTALL_PATH/open.sh %u
 Icon=INSTALL_PATH/connect.png
 StartupNotify=false
 StartupWMClass=Adobe Connect
+NoDisplay=true;
 MimeType=x-scheme-handler/connectpro;

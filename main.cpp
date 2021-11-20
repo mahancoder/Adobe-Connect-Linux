@@ -3,8 +3,6 @@
 #include "MyApp.h"
 #include "MyClient.h"
 #include <unistd.h>
-#include <gtk-3.0/gtk/gtk.h>
-#include <gdk/gdkx.h>
 #include <X11/X.h>
 #include <X11/Xutil.h>
 #include <iostream>
@@ -87,7 +85,6 @@ int main(int argc, char *argv[])
     ctx->SetPreference("profile.default_content_setting_values.plugins", val, *&err);
     ctx->SetPreference("plugins.run_all_flash_in_allow_mode", val, *&err);
 
-    gtk_init(&argc, &argv);
 
     main_display = XOpenDisplay(0);
     Window root_window = XDefaultRootWindow(main_display);

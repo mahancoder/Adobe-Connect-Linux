@@ -5,13 +5,15 @@ This project uses [Chromium Embedded Framework](https://github.com/chromiumembed
 ## Installation
 To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases). 
 
-Next, you need to put `libpepflashplayer.so` in the Release directory. Due to copyright reasons, I can't provide it here. 
+Next, you need to get `libpepflashplayer.so`. Due to copyright reasons, I can't provide it here. 
 
 You can get it from the [archive.org copy of the official Adobe Pepper Flash Player](https://web.archive.org/web/20210101005931/https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.465/flash_player_ppapi_linux.x86_64.tar.gz). 
 
 Extract the archive. The file you need is `libpepflashplayer.so`.
 
-You also need to unlock it using this tool [darktohka/FlashPatch](https://github.com/darktohka/FlashPatch). 
+Then, you need to unlock it using this tool [darktohka/FlashPatch](https://github.com/darktohka/FlashPatch).
+
+After that, put the patched `libpepflashplayer.so` in `~/.local/lib/flash/` (create the flash directory if it doesn't exist)
 
 You also need to have `ImageMagick` installed. 
 
