@@ -17,7 +17,10 @@ After that, put the patched `libpepflashplayer.so` in `~/.local/lib/flash/` (cre
 
 You also need to have `ImageMagick` installed. 
 
-Then, exectue `install.sh` **as root** to install the app.
+Then, exectue `install.sh` **as root** to install the app:
+```
+sudo ./install.sh
+```
 
 ### Building from source
 First clone the repository
