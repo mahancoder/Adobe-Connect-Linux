@@ -33,6 +33,17 @@ You can use the app to open meeting launched from your browser. Currently, you c
 #### **NOTE:** You NEED to change your User-Agent to be able to open the meeting. For that, you can use the User-Agent Switcher and Manager extension. [Chrome](https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
 
 **As of right now, the screen sharing and file download features do not work.**
+## FAQ
+If the app does not open, try the following command:
+```
+xdg-open connectpro:https://google.com
+```
+If the app opens and shows the Google page, the issue is from your browser.
+If not, then the error might be `gio: Operation not supported`. If that's the case, the issue can usually be solved by entering the following command:
+```
+xdg-mime default connect.desktop x-scheme-handler/connectpro
+```
+Otherwise, consider opening a new issue for further diagnosing.
 ## Credits
 The project wouldn't be possible without the [Chromium Embedded Framework](https://github.com/chromiumembedded)
 
