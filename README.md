@@ -15,8 +15,6 @@ Then, you need to unlock it using this tool [darktohka/FlashPatch](https://githu
 
 After that, put the patched `libpepflashplayer.so` in `~/.local/lib/flash/` (create the flash directory if it doesn't exist)
 
-You also need to have `ImageMagick` installed. 
-
 Then, exectue `install.sh` **as your normal user** to install the app:
 ```
 ./install.sh
