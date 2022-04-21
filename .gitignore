@@ -27,3 +27,4 @@ repo
 .flatpak-builder
 *.yml
 flatpak_connect.desktop
+connect-test

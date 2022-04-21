@@ -8,7 +8,7 @@
             "name": "g++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}-new",
+            "program": "${fileDirname}/connect-test",
             "args": ["connectpro:https://google.com"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

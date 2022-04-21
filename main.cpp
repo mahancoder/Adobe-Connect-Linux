@@ -29,6 +29,9 @@ void event_loop()
             if (event.xclient.data.l[0] == wmDeleteMessage)
             {
                 isOpen = false;
+                browser->GetHost()->CloseBrowser(true);
+                XDestroySubwindows(main_display, window_xid);
+                XDestroyWindow(main_display, window_xid);
                 XCloseDisplay(main_display);
                 break;
             }
@@ -39,8 +42,14 @@ void event_loop()
             XResizeWindow(main_display, child_window, ce.width, ce.height);
             browser->GetHost()->WasResized();
         }
+        else if (event.type == MappingNotify)
+        {
+            XRefreshKeyboardMapping(&event.xmapping);
+        }
     }
+    return;
 }
+
 void maximizeWindow(Window win, Display *display)
 {
     XEvent ev;
@@ -55,6 +64,7 @@ void maximizeWindow(Window win, Display *display)
 
     XSendEvent(display, DefaultRootWindow(display), False, SubstructureRedirectMask | SubstructureNotifyMask, &ev);
 }
+
 int main(int argc, char *argv[])
 {
     string launch_args = string(argv[1]);
@@ -79,12 +89,12 @@ int main(int argc, char *argv[])
     CefInitialize(main_args, settings, cefapp.get(), nullptr);
 
     CefRefPtr<CefRequestContext> ctx = CefRequestContext::GetGlobalContext();
+
     CefRefPtr<CefValue> val(CefValue::Create());
     val->SetInt(1);
     CefString err = CefString();
-    ctx->SetPreference("profile.default_content_setting_values.plugins", val, *&err);
-    ctx->SetPreference("plugins.run_all_flash_in_allow_mode", val, *&err);
-
+    ctx->SetPreference("profile.default_content_setting_values.plugins", val, err);
+    ctx->SetPreference("plugins.run_all_flash_in_allow_mode", val, err);
 
     main_display = XOpenDisplay(0);
     Window root_window = XDefaultRootWindow(main_display);
@@ -103,10 +113,9 @@ int main(int argc, char *argv[])
     child_window = browser->GetHost()->GetWindowHandle();
 
     XClassHint *hint = XAllocClassHint();
-    char *name = new char(strlen("Adobe Connect") + 1);
-    strcpy(name, "Adobe Connect");
-    hint->res_class = name;
-    hint->res_name = name;
+    const char *name = "Adobe Connect";
+    hint->res_class = strdup(name);
+    hint->res_name = strdup(name);
     XSetClassHint(main_display, window_xid, hint);
 
     maximizeWindow(window_xid, main_display);
@@ -120,6 +129,5 @@ int main(int argc, char *argv[])
     }
 
     CefShutdown();
-
     return 0;
 }
