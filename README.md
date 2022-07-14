@@ -30,7 +30,7 @@ You can get it from the [archive.org copy of the official Adobe Pepper Flash Pla
     cd Release
     ```
 ## Usage
-You can use the app to open meeting launched from your browser. Currently, you can't enter the meeting URL directly in the app, but rather you should enter it in the browser, and after logging in, click on the `Open in Application` button. You might also need to add `&proto=true` to the end of your meeting url. **As of right now, Screen sharing does NOT work due to how pepper flash works.**
+You can use the app to open meeting launched from your browser. Currently, you can't enter the meeting URL directly in the app, but rather you should enter it in the browser, and after logging in, click on the `Open in Application` button. You might also need to add `&proto=true` to the end of your meeting URL. **As of right now, Screen sharing does NOT work due to how pepper flash works.**
 #### **NOTE:** You NEED to change your User-Agent to be able to open the meeting. For that, you can use the User-Agent Switcher and Manager extension. [Chrome](https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/)
 
 **As of right now, the screen sharing and file download features do not work.**
