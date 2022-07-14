@@ -7,14 +7,7 @@ This project uses [Chromium Embedded Framework](https://github.com/chromiumembed
 ## Installation
 - To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases)
 
-- After that, you need to get `libpepflashplayer.so`. Due to copyright reasons, I can't provide it in my repo.
-You can get it from [here](https://github.com/darktohka/clean-flash-builds/releases/download/v1.7/flash_player_patched_ppapi_linux.x86_64.tar.gz)
-
-- Extract the archive. The file you need is `libpepflashplayer.so`.
-
-- After that, put the `libpepflashplayer.so` in `~/.local/lib/flash/` (create the flash directory if it doesn't exist)
-
-- Now, exectue `install.sh` **as your normal user** to install the app:
+- Then, exectue `install.sh` **as your normal user** to install the app:
     ```
     ./install.sh
     ```
