@@ -4,6 +4,9 @@ This project is an unofficial Linux client for the Adobe Connect meeting applica
 
 Adobe Connect does not have a linux version officially, however, since it's written in flash, it's possible to run it in a browser. This project, uses an underlying chromium browser with flash support to run the flash file behind the meetings. It provides the binding necessary to automatically launch the app just like the Windows version for convenience.
 This project uses [Chromium Embedded Framework](https://github.com/chromiumembedded) to utlize the underlying browser
+
+![Alt text](preview.png?raw=true "Preview Image")
+(an Ubuntu desktop running Adobe Connect Linux)
 ## Installation
 - To install the app, either [build from source](#building-from-source) or [download a prebuilt binary from the Releases section](https://github.com/mahancoder/Adobe-Connect-Linux/releases)
 
